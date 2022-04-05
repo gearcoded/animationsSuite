@@ -1,0 +1,11 @@
+v0.3
+Moved the effect data into the objects and arrays. 
+Added the variables where you can specify the desired effects for the open and close animation as well as the animation duration. Added the Readme and changelog files.
+
+
+v0.2
+Added the effect patterns in the comments. To use an effect you need to uncomment it.
+
+
+v0.1
+Reverse engineered the effect patterns. A custom effect is working.
