@@ -1,3 +1,6 @@
+v0.4
+Fixed the issue with the non-working effects that use the window height or width. Added the opacity effect. Added the opacity sub-effect to all effects. Now, the animations should work better and with less artifacts. Added the config file placeholders.
+
 v0.3
 Moved the effect data into the objects and arrays. 
 Added the variables where you can specify the desired effects for the open and close animation as well as the animation duration. Added the Readme and changelog files.

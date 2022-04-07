@@ -1,19 +1,20 @@
 [Desktop Entry]
 Comment=Animations for opening and closing windows and popups. Its not Ready to use, but you can experiment with it. Check the readme file to change the effects(~/.local/share/kwin/effects/kwinDevEffect/Readme.md).
 Encoding=UTF-8
-Icon=
+Icon=preferences-system-windows-effect-scale
 Name=kwinDevEffects
+
 Type=Service
-X-KDE-ParentApp=
-X-KDE-PluginInfo-Author=gearcoded
-X-KDE-PluginInfo-Category=Appearance
-X-KDE-PluginInfo-Email=
+X-KDE-ServiceTypes=KWin/Effect,KCModule
+X-KDE-PluginInfo-Author=Leaf Watoru
+X-KDE-PluginInfo-Category=Window Open/Close Animation
 X-KDE-PluginInfo-License=GPL
 X-KDE-PluginInfo-Name=kwinDevEffect
-X-KDE-PluginInfo-Version=0.3
-X-KDE-PluginInfo-Website=
-X-KDE-ServiceTypes=KWin/Effect
+X-KDE-PluginInfo-Version=0.4
+X-KDE-Ordering=40
 X-Plasma-API=javascript
-X-Plasma-DefaultSize=200,100
-X-Plasma-MainScript=code/kwinDevEffect.js
-X-Plasma-RemoteLocation=
+X-Plasma-MainScript=code/main.js
+X-KDE-PluginKeyword=kwinDevEffect
+X-KDE-Library=kcm_kwin4_genericscripted
+X-KDE-ParentComponents=kwinDevEffect
+
