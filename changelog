@@ -1,3 +1,7 @@
+v1.0
+This is a first stable release. Changed the name from kwinDevEffect (that supposed to be changed right from the start) to Animations Suite.
+Restructured the code, added more effects. Added a way to use the same animations for minimizing and maximizing windows and popups. Added the GUI to edit effects and change the duration.
+
 v0.4
 Fixed the issue with the non-working effects that use the window height or width. Added the opacity effect. Added the opacity sub-effect to all effects. Now, the animations should work better and with less artifacts. Added the config file placeholders.
 

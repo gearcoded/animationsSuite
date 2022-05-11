@@ -17,812 +17,274 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *********************************************************************/
 
-/*choose your effect here*/
-var open_animation = "flip"
-var open_duration = 200;
-
-var close_animation = "flip"
-var close_duration = 300;
-
-
-/*
-Possible values for the close animation:
-only_opacity
-maximize_1000
-minimize_to_center
-zoom_in_from_bottom
-minimize_to_top
-minimize_to_left
-minimize_to_right
-slide_to_right
-slide_to_left
-slide_to_top
-slide_to_bottom
-jump_down
-shrink_horizontally_to_center
-fly_and_minimize_to_right
-shrink_vertically_to_center
-shrink_verticaly
-shrink_horizontally
-zoom_flip
-flip
-paper_plane_like
-stretch_horizontally
-
-
-Possible values for the open animation:
-only_opacity
-unmaximize_1000
-unminimize
-zoom_in_from_top
-zoom_in_from_left
-zoom_in_from_right
-move_in_from_right
-move_in_from_left
-move_in_from_top
-move_in_from_bottom
-jump_up
-vertical_from_center
-fly_in_from_right
-horizontal_from_center
-vertical_rhombus_assemble
-horizontal_rhombus_assemble
-zoom_flip
-flip
-ride_from_left_thread
-thread
-
-
-*/
-
-
-
 /*Effects*/
-var close_effects = {
-  only_opacity: [
+var openEffects = [
+  // turn off open effects
+  [{ effect: null }],
+
+  // Opacity: 
+  [
     {
       effect: "Opacity",
       to: {
-        value1: 0,
-        value2: 0
-      }, from: {
         value1: 1.0,
         value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
       }
     },
   ],
 
-  maximize_1000: [
+  // compress: 
+  [
     {
       effect: "Opacity",
       to: {
-        value1: 0,
-        value2: 0
-      }, from: {
         value1: 1.0,
         value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
       }
     },
     {
       effect: "Scale",
       to: {
-        value1: 10.0,
-        value2: 10.0
-      }, from: {
         value1: 1.0,
         value2: 1.0
+      },
+      from: {
+        value1: 2.0,
+        value2: 2.0
       }
     }
   ],
 
-  minimize_to_center: [
+  // Expand: 
+  [
     {
       effect: "Opacity",
       to: {
-        value1: 0,
-        value2: 0
-      }, from: {
         value1: 1.0,
         value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
       }
     },
     {
       effect: "Scale",
       to: {
-        value1: 0.0,
-        value2: 0.0
-      }, from: {
         value1: 1.0,
         value2: 1.0
+      },
+      from: {
+        value1: 0.0,
+        value2: 0.0
       }
     }
   ],
 
-  zoom_in_from_bottom: [
+  // Expand 75% (aka Cool Effect): 
+  [
     {
       effect: "Opacity",
       to: {
-        value1: 0,
-        value2: 0
-      }, from: {
         value1: 1.0,
         value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
       }
     },
     {
       effect: "Scale",
       to: {
-        value1: 0.0,
-        value2: 0.0
-      }, from: {
         value1: 1.0,
         value2: 1.0
+      },
+      from: {
+        value1: 0.75,
+        value2: 0.75
+      }
+    }
+  ],
+
+
+  // Thread horizontal: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 1.0,
+        value2: 0.1
+      },
+      from: {
+        value1: 10,
+        value2: 0
+      }
+    },
+  ],
+
+
+  // Thread vertical: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0.1,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 10
+      }
+    },
+  ],
+
+  // Acid Thread Horizontal: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 1.0,
+        value2: 0.1
+      },
+      from: {
+        value1: 10,
+        value2: 0
+      }
+    },
+    {
+      effect: "Saturation",
+      to: {
+        value1: 1,
+        value2: 1
+      },
+      from: {
+        value1: 10,
+        value2: 10
+      }
+    },
+
+  ],
+
+  // Acid Thread vertical: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0.1,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 10
+      }
+    },
+    {
+      effect: "Saturation",
+      to: {
+        value1: 1,
+        value2: 1
+      },
+      from: {
+        value1: 10,
+        value2: 10
+      }
+    },
+
+  ],
+
+
+
+
+  // Unfold Left: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
       }
     },
     {
       effect: "Translation",
       to: {
-        value1: 0,
-        value2: 200
-      }, from: {
         value1: 0,
         value2: 0
       },
-    }
-  ],
-
-  minimize_to_top: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Scale",
-      to: {
-        value1: 0.0,
-        value2: 0.0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Translation",
-      to: {
-        value1: 0,
-        value2: -200
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    }
-  ],
-
-  minimize_to_left: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Scale",
-      to: {
-        value1: 0.0,
-        value2: 0.0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Translation",
-      to: {
-        value1: -200,
-        value2: 0
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    }
-  ],
-
-  minimize_to_right: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Scale",
-      to: {
-        value1: 0.0,
-        value2: 0.0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Translation",
-      to: {
-        value1: 200,
-        value2: 0
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    }
-  ],
-
-  slide_to_right: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Translation",
-      to: {
-        value1: 200,
-        value2: 0
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    }
-  ],
-
-  slide_to_left: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Translation",
-      to: {
-        value1: -200,
-        value2: 0
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    }
-  ],
-
-  slide_to_top: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Translation",
-      to: {
-        value1: 0,
-        value2: -200
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    }
-  ],
-
-  slide_to_bottom: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Translation",
-      to: {
-        value1: 0,
-        value2: 200
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    }
-  ],
-
-  jump_down: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-
-    {
-      effect: "Scale",
-      to: {
-        value1: 0.0,
-        value2: 0.0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Size",
-      to: {
-        value1: "width",
-        value2: 0
-      }, from: {
-        value1: "width",
-        value2: "height"
-      }
-    }
-  ],
-
-  shrink_horizontally_to_center: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Scale",
-      to: {
-        value1: "width",
-        value2: 0
-      }, from: {
-        value1: "width",
-        value2: "height"
-      }
-    }
-  ],
-
-  fly_and_minimize_to_right: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Scale",
-      to: {
-        value1: 0.0,
-        value2: 0.0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Size",
-      to: {
-        value1: 0,
-        value2: "height"
-      }, from: {
-        value1: "width",
-        value2: "height"
-      }
-    }
-  ],
-
-  shrink_vertically_to_center: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Size",
-      to: {
-        value1: 0,
-        value2: "height"
-      }, from: {
-        value1: "width",
-        value2: "height"
-      }
-    }
-  ],
-
-  shrink_verticaly: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Size",
-      to: {
-        value1: 0,
-        value2: "double_height"
-      }, from: {
-        value1: "width",
-        value2: "height"
-      }
-    }
-  ],
-
-  shrink_horizontally: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Size",
-      to: {
-        value1: "double_width",
-        value2: 0
-      }, from: {
-        value1: "width",
-        value2: "height"
-      }
-    }
-  ],
-
-  zoom_flip: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Scale",
-      to: {
-        value1: 0.0,
-        value2: 0.0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Rotation",
-      to: {
-        value1: -90,
-        value2: -90
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    }
-  ],
-
-  flip: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Rotation",
-      to: {
-        value1: -90,
-        value2: -90
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    }
-  ],
-
-  paper_plane_like: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Scale",
-      to: {
-        value1: 0.0,
-        value2: 0.0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Scale",
-      to: {
-        value1: 10.0,
-        value2: 0.0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    }
-  ],
-
-  stretch_horizontally: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Scale",
-      to: {
-        value1: 10.0,
-        value2: 0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    },
-    {
-      effect: "Opacity",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 1.0,
-        value2: 1.0
-      }
-    }
-  ]
-}
-
-
-var open_effects = {
-  only_opacity: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    },
-  ],
-
-  unmaximize_1000: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    },
-    {
-      effect: "Scale",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 10.0,
-        value2: 10.0
-      }
-    }
-  ],
-
-  unminimize: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    },
-    {
-      effect: "Scale",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 0.0,
-        value2: 0.0
-      }
-    }
-  ],
-
-  zoom_in_from_bottom: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    },
-    {
-      effect: "Scale",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 0.0,
-        value2: 0.0
-      }
-    },
-    {
-      effect: "Translation",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 0,
-        value2: 200
-      }
-    }
-  ],
-  // move from right!!!!
-  zoom_in_from_top: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    },
-    {
-      effect: "Scale",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 0.0,
-        value2: 0.0
-      }
-    },
-    {
-      effect: "Translation",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: 0,
-        value2: -200
-      }
-    }
-  ],
-
-  zoom_in_from_left: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    },
-    {
-      effect: "Scale",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 0.0,
-        value2: 0.0
-      }
-    },
-    {
-      effect: "Translation",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
+      from: {
         value1: -200,
         value2: 0
       }
     }
   ],
 
-  zoom_in_from_right: [
+  // Unfold Right: 
+  [
     {
       effect: "Opacity",
       to: {
         value1: 1.0,
         value2: 1.0
-      }, from: {
+      },
+      from: {
         value1: 0,
         value2: 0
-      }
-    },
-    {
-      effect: "Scale",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 0.0,
-        value2: 0.0
       }
     },
     {
@@ -830,20 +292,23 @@ var open_effects = {
       to: {
         value1: 0,
         value2: 0
-      }, from: {
+      },
+      from: {
         value1: 200,
         value2: 0
       }
     }
   ],
 
-  move_in_from_right: [
+  // Unfold Top: 
+  [
     {
       effect: "Opacity",
       to: {
         value1: 1.0,
         value2: 1.0
-      }, from: {
+      },
+      from: {
         value1: 0,
         value2: 0
       }
@@ -853,66 +318,23 @@ var open_effects = {
       to: {
         value1: 0,
         value2: 0
-      }, from: {
-        value1: 200,
-        value2: 0
-      }
-    }
-  ],
-
-  move_in_from_left: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    },
-    {
-      effect: "Translation",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
-        value1: -200,
-        value2: 0
-      }
-    }
-  ],
-
-  move_in_from_top: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    },
-    {
-      effect: "Translation",
-      to: {
-        value1: 0,
-        value2: 0
-      }, from: {
+      },
+      from: {
         value1: 0,
         value2: -200
       }
     }
   ],
 
-  move_in_from_bottom: [
+  // Unfold Bottom: 
+  [
     {
       effect: "Opacity",
       to: {
         value1: 1.0,
         value2: 1.0
-      }, from: {
+      },
+      from: {
         value1: 0,
         value2: 0
       }
@@ -922,20 +344,130 @@ var open_effects = {
       to: {
         value1: 0,
         value2: 0
-      }, from: {
+      },
+      from: {
         value1: 0,
         value2: 200
       }
     }
   ],
 
-  jump_up: [
+  // Unfold Top Left: 
+  [
     {
       effect: "Opacity",
       to: {
         value1: 1.0,
         value2: 1.0
-      }, from: {
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: -200,
+        value2: -200
+      }
+    }
+  ],
+
+  // Unfold Top Right: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 200,
+        value2: -200
+      }
+    }
+  ],
+
+  // Unfold Bottom Left: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: -200,
+        value2: 200
+      }
+    }
+  ],
+
+  // Unfold Bottom Right: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 200,
+        value2: 200
+      }
+    }
+  ],
+
+
+
+
+  // Unfold Left + Zoom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
         value1: 0,
         value2: 0
       }
@@ -945,54 +477,353 @@ var open_effects = {
       to: {
         value1: 1.0,
         value2: 1.0
-      }, from: {
+      },
+      from: {
         value1: 0.0,
         value2: 0.0
       }
     },
     {
-      effect: "Size",
+      effect: "Translation",
       to: {
-        value1: "width",
-        value2: "height"
-      }, from: {
-        value1: "width",
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: -200,
         value2: 0
       }
     }
   ],
 
-  vertical_from_center: [
+  // Unfold Right + Zoom: 
+  [
     {
       effect: "Opacity",
       to: {
         value1: 1.0,
         value2: 1.0
-      }, from: {
+      },
+      from: {
         value1: 0,
         value2: 0
       }
     },
     {
       effect: "Scale",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0.0,
+        value2: 0.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 200,
+        value2: 0
+      }
+    }
+  ],
+
+  // Unfold Top + Zoom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0.0,
+        value2: 0.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 0,
+        value2: -200
+      }
+    }
+  ],
+
+  // Unfold Bottom + Zoom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0.0,
+        value2: 0.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 0,
+        value2: 200
+      }
+    }
+  ],
+
+
+
+
+  // Unfold Top Left: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0.0,
+        value2: 0.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: -200,
+        value2: -200
+      }
+    }
+  ],
+
+  // Unfold Top Right: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0.0,
+        value2: 0.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 200,
+        value2: -200
+      }
+    }
+  ],
+
+  // Unfold Bottom Left: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0.0,
+        value2: 0.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: -200,
+        value2: 200
+      }
+    }
+  ],
+
+  // Unfold Bottom Right: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0.0,
+        value2: 0.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 200,
+        value2: 200
+      }
+    }
+  ],
+
+
+
+
+  // Grow: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Size",
       to: {
         value1: "width",
         value2: "height"
       },
       from: {
-        value1: "width",
+        value1: 0,
         value2: 0
       }
     }
   ],
 
-  fly_in_from_right: [
+  // Switched Sizes: 
+  [
     {
       effect: "Opacity",
       to: {
         value1: 1.0,
         value2: 1.0
-      }, from: {
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Size",
+      to: {
+        value1: "width",
+        value2: "height"
+      },
+      from: {
+        value1: "height",
+        value2: "width"
+      }
+    }
+  ],
+
+
+
+  // Diagonal Expand: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
         value1: 0,
         value2: 0
       }
@@ -1015,120 +846,20 @@ var open_effects = {
       },
       from: {
         value1: 0,
-        value2: "height"
+        value2: 0
       }
-    }
+    },
   ],
 
-  horizontal_from_center: [
+  // Flip Top: 
+  [
     {
       effect: "Opacity",
       to: {
         value1: 1.0,
         value2: 1.0
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    },
-    {
-      effect: "Size",
-      to: {
-        value1: "width",
-        value2: "height"
-      }, from: {
-        value1: 0,
-        value2: "height"
-      }
-    }
-  ],
-
-  vertical_rhombus_assemble: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    },
-    {
-      effect: "Size",
-      to: {
-        value1: "width",
-        value2: "height"
-      }, from: {
-        value1: 0,
-        value2: "double_height"
-      }
-    }
-  ],
-
-  horizontal_rhombus_assemble: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    },
-    {
-      effect: "Size",
-      to: {
-        value1: "width",
-        value2: "height"
-      }, from: {
-        value1: "double_width",
-        value2: 0
-      }
-    }
-  ],
-
-  zoom_flip: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 0,
-        value2: 0
-      }
-    },
-    {
-      effect: "Scale",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
-        value1: 0.0,
-        value2: 0.0
-      }
-    },
-    {
-      effect: "Rotation",
-      to: {
-        value1: 0,
-        value2: 0,
-      }, from: {
-        value1: -90,
-        value2: -90
-      }
-    }
-  ],
-
-  flip: [
-    {
-      effect: "Opacity",
-      to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
+      },
+      from: {
         value1: 0,
         value2: 0
       }
@@ -1138,20 +869,531 @@ var open_effects = {
       to: {
         value1: 0,
         value2: 0,
-      }, from: {
+      },
+      from: {
+        value1: 30,
+        value2: 30
+      }
+    }
+  ],
+
+  // Flip Bottom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: 0,
+        value2: 0,
+      },
+      from: {
+        value1: -30,
+        value2: -30
+      }
+    }
+  ],
+
+
+  // Zoom Flip Top: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0.0,
+        value2: 0.0
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: 0,
+        value2: 0,
+      },
+      from: {
+        value1: 90,
+        value2: 90
+      }
+    }
+  ],
+
+
+  // Zoom Flip Bottom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0.0,
+        value2: 0.0
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: 0,
+        value2: 0,
+      },
+      from: {
         value1: -90,
         value2: -90
       }
     }
   ],
 
-  ride_from_left_thread: [
+  // Cube Turn Top Outside: 
+  [
     {
       effect: "Opacity",
       to: {
         value1: 1.0,
         value2: 1.0
-      }, from: {
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 0,
+        value2: -200
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: 0,
+        value2: 0,
+      },
+      from: {
+        value1: 90,
+        value2: 90
+      }
+    }
+
+  ],
+
+  // Cube Turn Bottom Outside: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 0,
+        value2: 200
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: 0,
+        value2: 0,
+      },
+      from: {
+        value1: -90,
+        value2: -90
+      }
+    }
+
+  ],
+
+  // Cube Turn Top Inside: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 0,
+        value2: -200
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: 0,
+        value2: 0,
+      },
+      from: {
+        value1: -90,
+        value2: -90
+      }
+    }
+
+  ],
+
+  // Cube Turn Bottom Inside: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 0,
+        value2: 200
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: 0,
+        value2: 0,
+      },
+      from: {
+        value1: 90,
+        value2: 90
+      }
+    }
+
+  ],
+
+  // Fade from Dark: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Brightness",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+
+  ],
+
+  // Fade from Light: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Brightness",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 2,
+        value2: 2
+      }
+    },
+  ],
+
+  // Fade from Bleakness: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Saturation",
+      to: {
+        value1: 1,
+        value2: 1
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+  ],
+
+  // Fade from Acid: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Saturation",
+      to: {
+        value1: 1,
+        value2: 1
+      },
+      from: {
+        value1: 10,
+        value2: 10
+      }
+    },
+  ],
+
+
+  // Box: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Clip",
+      to: {
+        value1: 1,
+        value2: 1
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+  ],
+
+  // Box + Flip Top: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: 0,
+        value2: 0,
+      },
+      from: {
+        value1: -90,
+        value2: -90
+      }
+    },
+    {
+      effect: "Clip",
+      to: {
+        value1: 1,
+        value2: 1
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+  ],
+
+  // Box + Flip Bottom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: 0,
+        value2: 0,
+      },
+      from: {
+        value1: 90,
+        value2: 90
+      }
+    },
+    {
+      effect: "Clip",
+      to: {
+        value1: 1,
+        value2: 1
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+  ],
+
+  // Magnify: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 1,
+        value2: 1,
+      },
+      from: {
+        value1: 4,
+        value2: 4
+      }
+    },
+    {
+      effect: "Clip",
+      to: {
+        value1: 1,
+        value2: 1
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+  ],
+
+  // Stretch Horizontal: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Clip",
+      to: {
+        value1: 1,
+        value2: 1
+      },
+      from: {
         value1: 0,
         value2: 0
       }
@@ -1161,9 +1403,36 @@ var open_effects = {
       to: {
         value1: 1.0,
         value2: 1.0
-      }, from: {
-        value1: 0.0,
-        value2: 0.0
+      },
+      from: {
+        value1: 4,
+        value2: 0
+      }
+    },
+  ],
+
+  // Stretch Vertical: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Clip",
+      to: {
+        value1: 1,
+        value2: 1
+      },
+      from: {
+        value1: 0,
+        value2: 0
       }
     },
     {
@@ -1171,103 +1440,1637 @@ var open_effects = {
       to: {
         value1: 1.0,
         value2: 1.0
-      }, from: {
-        value1: 10.0,
-        value2: 0.0
+      },
+      from: {
+        value1: 0,
+        value2: 4
+      }
+    },
+  ],
+
+
+  // Exp: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Clip",
+      to: {
+        value1: 1,
+        value2: 1
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Saturation",
+      to: {
+        value1: 1,
+        value2: 1
+      },
+      from: {
+        value1: 10,
+        value2: 10
+      }
+    },
+  ],
+
+
+]
+
+
+var closeEffects = [
+  // turn off open effects
+  [{ effect: null }],
+
+  // Opacity: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+  ],
+
+  // Compress: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1,
+        value2: 1
       }
     }
   ],
 
-  thread: [
+  // Expand: 
+  [
     {
       effect: "Opacity",
       to: {
-        value1: 1.0,
-        value2: 1.0
-      }, from: {
         value1: 0,
         value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
       }
     },
     {
       effect: "Scale",
       to: {
+        value1: 2,
+        value2: 2
+      },
+      from: {
+        value1: 1,
+        value2: 1
+      }
+    }
+  ],
+
+  // Expand 75% (aka Cool Effect):
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1,
+        value2: 1
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0.75,
+        value2: 0.75
+      },
+      from: {
         value1: 1.0,
         value2: 1.0
+      }
+    }
+  ],
+
+
+  // Thread horizontal: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 10,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 0.1
+      }
+    },
+  ],
+
+
+  // Thread vertical: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0,
+        value2: 10
+      },
+      from: {
+        value1: 0.1,
+        value2: 1.0
+      }
+    },
+  ],
+
+  // Acid Thread Horizontal: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 10,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 0.1
+      }
+    },
+    {
+      effect: "Saturation",
+      to: {
+        value1: 10,
+        value2: 10
+      },
+      from: {
+        value1: 1,
+        value2: 1
+      }
+    },
+
+  ],
+
+  // Acid Thread vertical: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0,
+        value2: 10
+      },
+      from: {
+        value1: 0.1,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Saturation",
+      to: {
+        value1: 10,
+        value2: 10
+      },
+      from: {
+        value1: 1,
+        value2: 1
+      }
+    },
+
+  ],
+
+
+
+
+  // Unfold Left: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: -200,
+        value2: 0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+  // Unfold Right: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 200,
+        value2: 0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+  // Unfold Top: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: -200
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+  // Unfold Bottom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 200
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+  // Unfold Top Left: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: -200,
+        value2: -200
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+  // Unfold Top Right: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 200,
+        value2: -200
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+  // Unfold Bottom Left: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: -200,
+        value2: 200
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+  // Unfold Bottom Right: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 200,
+        value2: 200
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+
+
+
+  // Unfold Left + Zoom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0.0,
+        value2: 0.0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: -200,
+        value2: 0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+  // Unfold Right + Zoom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0.0,
+        value2: 0.0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 200,
+        value2: 0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+  // Unfold Top + Zoom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0.0,
+        value2: 0.0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: -200
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+  // Unfold Bottom + Zoom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0.0,
+        value2: 0.0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 200
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+
+
+
+  // Unfold Top Left + Zoom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0.0,
+        value2: 0.0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: -200,
+        value2: -200
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+  // Unfold Top Right + Zoom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0.0,
+        value2: 0.0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 200,
+        value2: -200
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+  // Unfold Bottom Left + Zoom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0.0,
+        value2: 0.0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: -200,
+        value2: 200
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+  // Unfold Bottom Right + Zoom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0.0,
+        value2: 0.0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 200,
+        value2: 200
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+
+
+
+  // Grow: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Size",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: "width",
+        value2: "height"
+      }
+    }
+  ],
+
+  // Switched Sizes: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Size",
+      to: {
+        value1: "half_height",
+        value2: "half_width"
+      },
+      from: {
+        value1: "width",
+        value2: "height"
+      }
+    }
+  ],
+
+  // Diagonal Expand: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0.0,
+        value2: 0.0
       }, from: {
-        value1: 10.0,
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Size",
+      to: {
+        value1: "half_width",
+        value2: "half_height"
+      },
+      from: {
+        value1: "width",
+        value2: "height"
+      }
+    },
+  ],
+
+  // Flip Top: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
         value2: 0
       }
     },
-  ]
-}
+    {
+      effect: "Rotation",
+      to: {
+        value1: 30,
+        value2: 30,
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+  // Flip Bottom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 1.0,
+        value2: 1.0
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: -30,
+        value2: -30,
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
 
 
-function attach_to_window_object(sub_effect, window) {
-  for (prop1 in sub_effect) {
-    if (typeof sub_effect[prop1] != "string") {
-      for (prop2 in sub_effect[prop1]) {
-        switch (sub_effect[prop1][prop2]) {
+  // Zoom Flip Top: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0.0,
+        value2: 0.0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: 90,
+        value2: 90,
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+
+  // Zoom Flip Bottom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0.0,
+        value2: 0.0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: -90,
+        value2: -90,
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+  ],
+
+  // Cube Turn Top Outside: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: -200
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: 90,
+        value2: 90,
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+
+  ],
+
+  // Cube Turn Bottom Outside: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 200
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: -90,
+        value2: -90,
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+
+  ],
+
+  // Cube Turn Top Inside: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: -200
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: -90,
+        value2: -90,
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+
+  ],
+
+  // Cube Turn Bottom Inside: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Translation",
+      to: {
+        value1: 0,
+        value2: 200
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: 90,
+        value2: 90,
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    }
+
+  ],
+
+  // Fade from Dark: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Brightness",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1,
+        value2: 1
+      }
+    },
+
+  ],
+
+  // Fade from Light: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Brightness",
+      to: {
+        value1: 2,
+        value2: 2
+      },
+      from: {
+        value1: 1,
+        value2: 1
+      }
+    },
+  ],
+
+  // Fade from Bleakness: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Saturation",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1,
+        value2: 1
+      }
+    },
+  ],
+
+  // Fade from Acid: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Saturation",
+      to: {
+        value1: 10,
+        value2: 10
+      },
+      from: {
+        value1: 1,
+        value2: 1
+      }
+    },
+  ],
+
+
+  // Box: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Clip",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1,
+        value2: 1
+      }
+    },
+  ],
+
+  // Box + Flip Top: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: -90,
+        value2: -90,
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Clip",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1,
+        value2: 1
+      }
+    },
+  ],
+
+  // Box + Flip Bottom: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Rotation",
+      to: {
+        value1: 90,
+        value2: 90,
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Clip",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1,
+        value2: 1
+      }
+    },
+  ],
+
+  // Magnify: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 4,
+        value2: 4,
+      },
+      from: {
+        value1: 1,
+        value2: 1
+      }
+    },
+    {
+      effect: "Clip",
+      to: {
+        value1: 0.5,
+        value2: 0.5
+      },
+      from: {
+        value1: 1,
+        value2: 1
+      }
+    },
+  ],
+
+  // Stretch Horizontal: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Clip",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1,
+        value2: 1
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 4,
+        value2: 0
+      },
+      from: {
+        value1: 1,
+        value2: 1
+      }
+    },
+  ],
+
+  // Stretch Vertical: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Clip",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1,
+        value2: 1
+      }
+    },
+    {
+      effect: "Scale",
+      to: {
+        value1: 0,
+        value2: 4
+      },
+      from: {
+        value1: 1,
+        value2: 1
+      }
+    },
+  ],
+
+
+  // Exp: 
+  [
+    {
+      effect: "Opacity",
+      to: {
+        value1: 0,
+        value2: 0
+      },
+      from: {
+        value1: 1.0,
+        value2: 1.0
+      }
+    },
+    {
+      effect: "Clip",
+      to: {
+        value1: 1,
+        value2: 1
+      },
+      from: {
+        value1: 0,
+        value2: 0
+      }
+    },
+    {
+      effect: "Saturation",
+      to: {
+        value1: 1,
+        value2: 1
+      },
+      from: {
+        value1: 10,
+        value2: 10
+      }
+    },
+  ],
+
+
+]
+
+
+
+
+function attachWindowObject(subEffect, window) {
+  for (prop1 in subEffect) {
+    if (typeof subEffect[prop1] != "string") {
+      for (prop2 in subEffect[prop1]) {
+        switch (subEffect[prop1][prop2]) {
           case "width":
-            sub_effect[prop1][prop2] = window.width
+            subEffect[prop1][prop2] = window.width
             break
           case "height":
-            sub_effect[prop1][prop2] = window.height
+            subEffect[prop1][prop2] = window.height
             break
           case "double_width":
-            sub_effect[prop1][prop2] = window.width * 2
+            subEffect[prop1][prop2] = window.width * 2
             break
           case "double_height":
-            sub_effect[prop1][prop2] = window.height * 2
+            subEffect[prop1][prop2] = window.height * 2
+            break
+          case "half_width":
+            subEffect[prop1][prop2] = window.width / 2
+            break
+          case "half_height":
+            subEffect[prop1][prop2] = window.height / 2
             break
         }
       }
     }
   }
-  sub_effect.to.value1
-  sub_effect.to.value2
-  sub_effect.from.value1
-  sub_effect.from.value2
-  return sub_effect;
+  subEffect.to.value1
+  subEffect.to.value2
+  subEffect.from.value1
+  subEffect.from.value2
+  return subEffect;
 }
 
-/*global effect, effects, animationTime, Effect*/
-var kwinDevEffect = {
+
+var animationSuite = {
   duration: animationTime(300),
   loadConfig: function () {
     "use strict";
-    kwinDevEffect.duration = animationTime(300);
-    isFadeToBlack: false,
-    kwinDevEffect.isFadeToBlack = effect.readConfig("FadeToBlack", false);
+
+    animationSuite.openEffect = effect.readConfig("openEffect", false);
+    animationSuite.openDuration = effect.readConfig("openDuration", false);
+
+    animationSuite.closeEffect = effect.readConfig("closeEffect", false);
+    animationSuite.closeDuration = effect.readConfig("closeDuration", false);
+
+
+    // animationSuite.minimizeEffect = effect.readConfig("minimizeEffect", false);
+    // animationSuite.minimizeDuration = effect.readConfig("minimizeDuration", false);
+
+    // animationSuite.unMinimizeEffect = effect.readConfig("unMinimizeEffect", false);
+    // animationSuite.unMinimizeDuration = effect.readConfig("unMinimizeDuration", false);
+
+
   },
-  windowClosed: function (window) {
-    "use strict";
 
-    var close_params = close_effects[close_animation];
-    close_params.forEach(function (sub_effect) {
-      attach_to_window_object(sub_effect, window)
-      effect.animate(window, Effect[sub_effect.effect], close_duration, sub_effect.to, sub_effect.from)
-    })
-
-
-
-  },
   windowAdded: function (window) {
     "use strict";
 
-    var open_params = open_effects[open_animation];
-    open_params.forEach(function (sub_effect) {
-      attach_to_window_object(sub_effect, window)
-      effect.animate(window, Effect[sub_effect.effect], open_duration, sub_effect.to, sub_effect.from)
+    var openParams = openEffects[animationSuite.openEffect];
+    openParams.forEach(function (subEffect) {
+      attachWindowObject(subEffect, window)
+      effect.animate(window, Effect[subEffect.effect], animationSuite.openDuration, subEffect.to, subEffect.from)
+    })
+
+  },
+
+  windowClosed: function (window) {
+    "use strict";
+    var closeParams = closeEffects[animationSuite.closeEffect];
+    closeParams.forEach(function (subEffect) {
+      attachWindowObject(subEffect, window)
+      effect.animate(window, Effect[subEffect.effect], animationSuite.closeDuration, subEffect.to, subEffect.from)
+    })
+
+  },
+
+  windowUnminimized: function (window) {
+    "use strict";
+
+    var openParams = openEffects[animationSuite.openEffect];
+    openParams.forEach(function (subEffect) {
+      attachWindowObject(subEffect, window)
+      effect.animate(window, Effect[subEffect.effect], animationSuite.openDuration, subEffect.to, subEffect.from)
+    })
+
+  },
+
+  windowMinimized: function (window) {
+    "use strict";
+    var closeParams = closeEffects[animationSuite.closeEffect];
+    closeParams.forEach(function (subEffect) {
+      attachWindowObject(subEffect, window)
+      effect.animate(window, Effect[subEffect.effect], animationSuite.closeDuration, subEffect.to, subEffect.from)
     })
 
   },
 
   init: function () {
     "use strict";
-    effect.configChanged.connect(kwinDevEffect.loadConfig);
-    effects.windowClosed.connect(kwinDevEffect.windowClosed);
-    effects.windowAdded.connect(kwinDevEffect.windowAdded);
+    effect.configChanged.connect(animationSuite.loadConfig);
+
+    effects.windowAdded.connect(animationSuite.windowAdded);
+    effects.windowClosed.connect(animationSuite.windowClosed);
+
+    // effects.windowMinimized.connect(animationSuite.windowMinimized);
+    // effects.windowUnminimized.connect(animationSuite.windowUnminimized);
+
+    animationSuite.loadConfig();
   }
 };
-kwinDevEffect.init();
+animationSuite.init();
