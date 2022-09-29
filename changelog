@@ -1,3 +1,7 @@
+v1.1
+Added a way to separate window effects from modals. Separated Open and Close effects from Minimize/Unminimize effects. Started working on a new config UI.
+
+
 v1.0
 This is a first stable release. Changed the name from kwinDevEffect (that supposed to be changed right from the start) to Animations Suite.
 Restructured the code, added more effects. Added a way to use the same animations for minimizing and maximizing windows and popups. Added the GUI to edit effects and change the duration.

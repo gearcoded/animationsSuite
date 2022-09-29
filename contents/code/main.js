@@ -2996,6 +2996,13 @@ function attachWindowObject(subEffect, window) {
   return subEffect;
 }
 
+function isModal(window){
+  return window.popupWindow || window.outline 
+  || window.dock || window.splash || window.toolbar
+  || window.notification || window.onScreenDisplay
+  || window.criticalNotification || window.utility || window.managed
+}
+
 
 var animationSuite = {
   duration: animationTime(300),
@@ -3008,12 +3015,14 @@ var animationSuite = {
     animationSuite.closeEffect = effect.readConfig("closeEffect", false);
     animationSuite.closeDuration = effect.readConfig("closeDuration", false);
 
+    animationSuite.openForModals = effect.readConfig("openForModals", false);
+    animationSuite.closeForModals = effect.readConfig("closeForModals", false);
 
-    // animationSuite.minimizeEffect = effect.readConfig("minimizeEffect", false);
-    // animationSuite.minimizeDuration = effect.readConfig("minimizeDuration", false);
+    animationSuite.minimizeEffect = effect.readConfig("minimizeEffect", false);
+    animationSuite.minimizeDuration = effect.readConfig("minimizeDuration", false);
 
-    // animationSuite.unMinimizeEffect = effect.readConfig("unMinimizeEffect", false);
-    // animationSuite.unMinimizeDuration = effect.readConfig("unMinimizeDuration", false);
+    animationSuite.unMinimizeEffect = effect.readConfig("unminimizeEffect", false);
+    animationSuite.unMinimizeDuration = effect.readConfig("unminimizeDuration", false);
 
 
   },
@@ -3024,6 +3033,10 @@ var animationSuite = {
     var openParams = openEffects[animationSuite.openEffect];
     openParams.forEach(function (subEffect) {
       attachWindowObject(subEffect, window)
+      if (isModal(window) && !animationSuite.openForModals){
+        return false;
+      }
+
       effect.animate(window, Effect[subEffect.effect], animationSuite.openDuration, subEffect.to, subEffect.from)
     })
 
@@ -3031,9 +3044,14 @@ var animationSuite = {
 
   windowClosed: function (window) {
     "use strict";
+
+    if (isModal(window) && !animationSuite.closeForModals){
+      return false;
+    }
+
     var closeParams = closeEffects[animationSuite.closeEffect];
     closeParams.forEach(function (subEffect) {
-      attachWindowObject(subEffect, window)
+      attachWindowObject(subEffect, window);  
       effect.animate(window, Effect[subEffect.effect], animationSuite.closeDuration, subEffect.to, subEffect.from)
     })
 
@@ -3042,20 +3060,20 @@ var animationSuite = {
   windowUnminimized: function (window) {
     "use strict";
 
-    var openParams = openEffects[animationSuite.openEffect];
+    var openParams = openEffects[animationSuite.unMinimizeEffect];
     openParams.forEach(function (subEffect) {
       attachWindowObject(subEffect, window)
-      effect.animate(window, Effect[subEffect.effect], animationSuite.openDuration, subEffect.to, subEffect.from)
+      effect.animate(window, Effect[subEffect.effect], animationSuite.unMinimizeDuration, subEffect.to, subEffect.from)
     })
 
   },
 
   windowMinimized: function (window) {
     "use strict";
-    var closeParams = closeEffects[animationSuite.closeEffect];
+    var closeParams = closeEffects[animationSuite.minimizeEffect];
     closeParams.forEach(function (subEffect) {
       attachWindowObject(subEffect, window)
-      effect.animate(window, Effect[subEffect.effect], animationSuite.closeDuration, subEffect.to, subEffect.from)
+      effect.animate(window, Effect[subEffect.effect], animationSuite.minimizeDuration, subEffect.to, subEffect.from)
     })
 
   },
@@ -3067,8 +3085,8 @@ var animationSuite = {
     effects.windowAdded.connect(animationSuite.windowAdded);
     effects.windowClosed.connect(animationSuite.windowClosed);
 
-    // effects.windowMinimized.connect(animationSuite.windowMinimized);
-    // effects.windowUnminimized.connect(animationSuite.windowUnminimized);
+    effects.windowMinimized.connect(animationSuite.windowMinimized);
+    effects.windowUnminimized.connect(animationSuite.windowUnminimized);
 
     animationSuite.loadConfig();
   }
