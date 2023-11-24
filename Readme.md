@@ -2,5 +2,5 @@ This is a plugin for KDE Plasma 5.x for adding animation effects for opening and
 
 Feel free to suggest your combinations of the animation effects!
 
-Tested on Kubuntu 20.04.
+Tested on Kubuntu 22.04 (Plasma version 5.24).
 

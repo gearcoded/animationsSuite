@@ -1,0 +1,1250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>KWin::animationsSuiteConfigForm</class>
+ <widget class="QWidget" name="KWin::animationsSuiteConfigForm1">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>160</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+
+
+   <item>
+    <widget class="QLabel" name="">
+     <property name="text">
+      <string>Open Effect:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QComboBox" name="kcfg_openEffect">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <item>
+      <property name="text">
+       <string>Off</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Opacity</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Compress</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Expand</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Expand 75% (aka Cool Effect)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Thread horizontal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Thread vertical</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Acid Thread horizontal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Acid Thread vertical</string>
+      </property>
+     </item>
+
+     <item>
+      <property name="text">
+       <string>Unfold Left</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Right</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top(Descend)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom(Ascend)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top Left</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top Right</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom Left</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom Right</string>
+      </property>
+     </item>
+
+     <item>
+      <property name="text">
+       <string>Unfold Left + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Right + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top(Descend) + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom(Ascend) + Zoom</string>
+      </property>
+     </item>
+
+     <item>
+      <property name="text">
+       <string>Unfold Top Left + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top Right + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom Left + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom Right + Zoom</string>
+      </property>
+     </item>
+
+     <item>
+      <property name="text">
+       <string>Grow</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Switched Sizes</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Diagonal Expand</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Flip Top</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Flip Bottom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Zoom Flip Top</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Zoom Flip Bottom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cube Turn Top Outside</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cube Turn Bottom Outside</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cube Turn Top Inside</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cube Turn Bottom Inside</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fade from Dark</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fade from Light</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fade from Bleakness</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fade from Acid</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Box</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Box + Flip Top</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Box + Flip Bottom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Magnify</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Stretch Horizontal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Stretch Vertical</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="">
+     <property name="text">
+      <string>Open Duration:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QSpinBox" name="kcfg_openDuration">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximum">
+      <double>4000</double>
+     </property>
+     <property name="singleStep">
+      <double>50</double>
+     </property>
+     <property name="value">
+      <number>200</number>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="kcfg_openForModals">
+     <property name="text">
+      <string>Apply for modals</string>
+     </property>
+    </widget>
+   </item>
+
+
+
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+
+   <item>
+    <widget class="QLabel" name="">
+     <property name="text">
+      <string>Close Effect:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QComboBox" name="kcfg_closeEffect">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <item>
+      <property name="text">
+       <string>Off</string>
+      </property>
+     </item>
+
+      <item>
+      <property name="text">
+       <string>Opacity</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Compress</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Expand</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Expand 75% (aka Cool Effect)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Thread horizontal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Thread vertical</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Acid Thread horizontal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Acid Thread vertical</string>
+      </property>
+     </item>
+
+     <item>
+      <property name="text">
+       <string>Unfold Left</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Right</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top(Descend)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom(Ascend)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top Left</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top Right</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom Left</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom Right</string>
+      </property>
+     </item>
+
+     <item>
+      <property name="text">
+       <string>Unfold Left + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Right + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top(Descend) + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom(Ascend) + Zoom</string>
+      </property>
+     </item>
+
+     <item>
+      <property name="text">
+       <string>Unfold Top Left + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top Right + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom Left + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom Right + Zoom</string>
+      </property>
+     </item>
+
+     <item>
+      <property name="text">
+       <string>Grow</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Switched Sizes</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Diagonal Expand</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Flip Top</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Flip Bottom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Zoom Flip Top</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Zoom Flip Bottom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cube Turn Top Outside</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cube Turn Bottom Outside</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cube Turn Top Inside</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cube Turn Bottom Inside</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fade from Dark</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fade from Light</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fade from Bleakness</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fade from Acid</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Box</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Box + Flip Top</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Box + Flip Bottom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Magnify</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Stretch Horizontal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Stretch Vertical</string>
+      </property>
+     </item>
+
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="">
+     <property name="text">
+      <string>Close Duration:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QSpinBox" name="kcfg_closeDuration">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximum">
+      <double>4000</double>
+     </property>
+     <property name="singleStep">
+      <double>50</double>
+     </property>
+     <property name="value">
+      <number>300</number>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="kcfg_closeForModals">
+     <property name="text">
+      <string>Apply for modals</string>
+     </property>
+    </widget>
+   </item>
+
+
+
+
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+
+
+
+   <item>
+    <widget class="QLabel" name="">
+     <property name="text">
+      <string>Unminimize Effect:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QComboBox" name="kcfg_unminimizeEffect">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <item>
+      <property name="text">
+       <string>Off</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Opacity</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Compress</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Expand</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Expand 75% (aka Cool Effect)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Thread horizontal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Thread vertical</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Acid Thread horizontal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Acid Thread vertical</string>
+      </property>
+     </item>
+
+     <item>
+      <property name="text">
+       <string>Unfold Left</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Right</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top(Descend)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom(Ascend)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top Left</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top Right</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom Left</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom Right</string>
+      </property>
+     </item>
+
+     <item>
+      <property name="text">
+       <string>Unfold Left + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Right + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top(Descend) + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom(Ascend) + Zoom</string>
+      </property>
+     </item>
+
+     <item>
+      <property name="text">
+       <string>Unfold Top Left + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top Right + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom Left + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom Right + Zoom</string>
+      </property>
+     </item>
+
+     <item>
+      <property name="text">
+       <string>Grow</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Switched Sizes</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Diagonal Expand</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Flip Top</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Flip Bottom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Zoom Flip Top</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Zoom Flip Bottom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cube Turn Top Outside</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cube Turn Bottom Outside</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cube Turn Top Inside</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cube Turn Bottom Inside</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fade from Dark</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fade from Light</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fade from Bleakness</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fade from Acid</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Box</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Box + Flip Top</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Box + Flip Bottom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Magnify</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Stretch Horizontal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Stretch Vertical</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="">
+     <property name="text">
+      <string>Unminimize Duration:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QSpinBox" name="kcfg_unminimizeDuration">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximum">
+      <double>4000</double>
+     </property>
+     <property name="singleStep">
+      <double>50</double>
+     </property>
+     <property name="value">
+      <number>200</number>
+     </property>
+    </widget>
+   </item>
+
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+
+   <item>
+    <widget class="QLabel" name="">
+     <property name="text">
+      <string>Minimize Effect:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QComboBox" name="kcfg_minimizeEffect">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <item>
+      <property name="text">
+       <string>Off</string>
+      </property>
+     </item>
+
+      <item>
+      <property name="text">
+       <string>Opacity</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Compress</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Expand</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Expand 75% (aka Cool Effect)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Thread horizontal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Thread vertical</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Acid Thread horizontal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Acid Thread vertical</string>
+      </property>
+     </item>
+
+     <item>
+      <property name="text">
+       <string>Unfold Left</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Right</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top(Descend)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom(Ascend)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top Left</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top Right</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom Left</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom Right</string>
+      </property>
+     </item>
+
+     <item>
+      <property name="text">
+       <string>Unfold Left + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Right + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top(Descend) + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom(Ascend) + Zoom</string>
+      </property>
+     </item>
+
+     <item>
+      <property name="text">
+       <string>Unfold Top Left + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Top Right + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom Left + Zoom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Unfold Bottom Right + Zoom</string>
+      </property>
+     </item>
+
+     <item>
+      <property name="text">
+       <string>Grow</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Switched Sizes</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Diagonal Expand</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Flip Top</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Flip Bottom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Zoom Flip Top</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Zoom Flip Bottom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cube Turn Top Outside</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cube Turn Bottom Outside</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cube Turn Top Inside</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cube Turn Bottom Inside</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fade from Dark</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fade from Light</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fade from Bleakness</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fade from Acid</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Box</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Box + Flip Top</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Box + Flip Bottom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Magnify</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Stretch Horizontal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Stretch Vertical</string>
+      </property>
+     </item>
+
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="">
+     <property name="text">
+      <string>Minimize Duration:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QSpinBox" name="kcfg_minimizeDuration">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximum">
+      <double>4000</double>
+     </property>
+     <property name="singleStep">
+      <double>50</double>
+     </property>
+     <property name="value">
+      <number>300</number>
+     </property>
+    </widget>
+   </item>
+
+ 
+
+
+
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+
+
+
+
+   <!-- <item>
+    <widget class="QCheckBox" name="kcfg_SomeProperty">
+     <property name="text">
+      <string>Placeholder</string>
+     </property>
+    </widget>
+   </item> -->
+
+      <!-- <item row="4" column="1" colspan="2">
+       <widget class="QSlider" name="kcfg_ComboboxPopups">
+        <property name="minimum">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="tickPosition">
+         <enum>QSlider::TicksBelow</enum>
+        </property>
+        <property name="tickInterval">
+         <number>10</number>
+        </property>
+       </widget>
+      </item> -->
+  </layout>
+ </widget>
+
+
+
+ <resources/>
+ <connections/>
+</ui>

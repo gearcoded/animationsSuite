@@ -1,3 +1,7 @@
+v1.2
+Created a new config UI (for now, only for windows).
+
+
 v1.1
 Added a way to separate window effects from modals. Separated Open and Close effects from Minimize/Unminimize effects. Started working on a new config UI.
 
