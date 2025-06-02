@@ -19,7 +19,10 @@
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tab">
+     <widget class="QWidget" name="tab_open">
+      <attribute name="title">
+       <string>Open/Close</string>
+      </attribute>
       <property name="enabled">
        <bool>true</bool>
       </property>
@@ -29,9 +32,6 @@
         <height>350</height>
        </size>
       </property>
-      <attribute name="title">
-       <string>Windows</string>
-      </attribute>
       <widget class="QWidget" name="gridLayoutWidget">
        <property name="geometry">
         <rect>
@@ -331,6 +331,7 @@
             <number>200</number>
            </property>
           </widget>
+          <!--
           <widget class="QCheckBox" name="kcfg_openForModals">
            <property name="geometry">
             <rect>
@@ -344,6 +345,7 @@
             <string>Apply for modals</string>
            </property>
           </widget>
+          -->
          </widget>
         </item>
         <item row="0" column="1">
@@ -629,6 +631,7 @@
             <number>200</number>
            </property>
           </widget>
+          <!--
           <widget class="QCheckBox" name="kcfg_closeForModals">
            <property name="geometry">
             <rect>
@@ -642,9 +645,603 @@
             <string>Apply for modals</string>
            </property>
           </widget>
+          -->
          </widget>
         </item>
         <item row="1" column="0">
+         <widget class="QGroupBox" name="groupBox2">
+          <property name="title">
+           <string>Open Modals</string>
+          </property>
+          <widget class="QComboBox" name="kcfg_openModalsEffect">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>30</y>
+             <width>280</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <item>
+            <property name="text">
+             <string>Off</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Opacity</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Compress</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Expand</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Expand 75% (aka Cool Effect)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Thread horizontal</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Thread vertical</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Acid Thread horizontal</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Acid Thread vertical</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Left</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Right</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Top(Descend)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Bottom(Ascend)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Top Left</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Top Right</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Bottom Left</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Bottom Right</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Left + Zoom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Right + Zoom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Top(Descend) + Zoom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Bottom(Ascend) + Zoom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Top Left + Zoom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Top Right + Zoom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Bottom Left + Zoom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Bottom Right + Zoom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Grow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Switched Sizes</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Diagonal Expand</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Flip Top</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Flip Bottom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Zoom Flip Top</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Zoom Flip Bottom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Cube Turn Top Outside</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Cube Turn Bottom Outside</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Cube Turn Top Inside</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Cube Turn Bottom Inside</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Fade from Dark</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Fade from Light</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Fade from Bleakness</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Fade from Acid</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Box</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Box + Flip Top</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Box + Flip Bottom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Magnify</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Stretch Horizontal</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Stretch Vertical</string>
+            </property>
+           </item>
+          </widget>
+          <widget class="QLabel" name="label">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>80</y>
+             <width>280</width>
+             <height>18</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Duration:</string>
+           </property>
+          </widget>
+          <widget class="QSpinBox" name="kcfg_openModalsDuration">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>100</y>
+             <width>280</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximum">
+            <number>4000</number>
+           </property>
+           <property name="singleStep">
+            <number>50</number>
+           </property>
+           <property name="value">
+            <number>200</number>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QGroupBox" name="groupBox_3">
+          <property name="title">
+           <string>Close Modals</string>
+          </property>
+          <widget class="QComboBox" name="kcfg_closeModalsEffect">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>30</y>
+             <width>280</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <item>
+            <property name="text">
+             <string>Off</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Opacity</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Compress</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Expand</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Expand 75% (aka Cool Effect)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Thread horizontal</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Thread vertical</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Acid Thread horizontal</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Acid Thread vertical</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Left</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Right</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Top(Descend)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Bottom(Ascend)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Top Left</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Top Right</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Bottom Left</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Bottom Right</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Left + Zoom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Right + Zoom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Top(Descend) + Zoom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Bottom(Ascend) + Zoom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Top Left + Zoom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Top Right + Zoom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Bottom Left + Zoom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unfold Bottom Right + Zoom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Grow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Switched Sizes</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Diagonal Expand</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Flip Top</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Flip Bottom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Zoom Flip Top</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Zoom Flip Bottom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Cube Turn Top Outside</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Cube Turn Bottom Outside</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Cube Turn Top Inside</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Cube Turn Bottom Inside</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Fade from Dark</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Fade from Light</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Fade from Bleakness</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Fade from Acid</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Box</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Box + Flip Top</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Box + Flip Bottom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Magnify</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Stretch Horizontal</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Stretch Vertical</string>
+            </property>
+           </item>
+          </widget>
+          <widget class="QLabel" name="label">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>80</y>
+             <width>280</width>
+             <height>18</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Duration:</string>
+           </property>
+          </widget>
+          <widget class="QSpinBox" name="kcfg_closeModalsDuration">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>100</y>
+             <width>280</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximum">
+            <number>4000</number>
+           </property>
+           <property name="singleStep">
+            <number>50</number>
+           </property>
+           <property name="value">
+            <number>200</number>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_minimize">
+      <attribute name="title">
+       <string>Minimize/Unminimize</string>
+      </attribute>
+      <widget class="QWidget" name="gridLayoutWidget2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>600</width>
+         <height>340</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout2">
+        <item row="0" column="0">
          <widget class="QGroupBox" name="groupBox_2">
           <property name="title">
            <string>Unminimize Windows</string>
@@ -927,9 +1524,22 @@
             <number>200</number>
            </property>
           </widget>
+          <widget class="QCheckBox" name="kcfg_unminimizePanelLink">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>130</y>
+             <width>280</width>
+             <height>24</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Link with the Panel</string>
+           </property>
+          </widget>
          </widget>
         </item>
-        <item row="1" column="1">
+        <item row="0" column="1">
          <widget class="QGroupBox" name="groupBox_4">
           <property name="title">
            <string>Minimize Windows</string>
@@ -1212,20 +1822,35 @@
             <number>200</number>
            </property>
           </widget>
+          <widget class="QCheckBox" name="kcfg_minimizePanelLink">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>130</y>
+             <width>280</width>
+             <height>24</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Link with the Panel</string>
+           </property>
+          </widget>
          </widget>
         </item>
        </layout>
       </widget>
      </widget>
-     <widget class="QWidget" name="tab_2">
-      <attribute name="title">
-       <string>Modals</string>
-      </attribute>
-     </widget>
-     <widget class="QWidget" name="tab_3">
+     <widget class="QWidget" name="tab_rollup">
       <attribute name="title">
        <string>Rollup</string>
       </attribute>
+      
+      <widget class="QLabel" name="placeholder">
+        <property name="text">
+          <string>Not implemented yet</string>
+        </property>
+      </widget>
+
      </widget>
     </widget>
    </item>

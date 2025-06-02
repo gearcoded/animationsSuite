@@ -1,3 +1,9 @@
+v1.5
+Added the metadata.json file for newer Plasma versions
+Restructured the config layout
+Added the link with the Panel option for the Minimize/Unminimize effects (doesn't work well in some combinations)
+
+
 v1.2
 Created a new config UI (for now, only for windows).
 

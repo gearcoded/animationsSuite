@@ -1,7 +1,7 @@
 /********************************************************************
  This file is a custom kwin effects extension for the KDE project.
 
- 2022, Reverse engineered by Leaf Watoru
+ 2022-2025, Reverse engineered and modified by Leaf Watoru
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -2989,18 +2989,22 @@ function attachWindowObject(subEffect, window) {
       }
     }
   }
-  subEffect.to.value1
-  subEffect.to.value2
-  subEffect.from.value1
-  subEffect.from.value2
   return subEffect;
 }
 
-function isModal(window){
-  return window.popupWindow || window.outline 
-  || window.dock || window.splash || window.toolbar
-  || window.notification || window.onScreenDisplay
-  || window.criticalNotification || window.utility || window.managed
+function isModal(window) {
+  return window.popupWindow
+    || window.outline
+    || window.dock
+    || window.splash
+    || window.toolbar
+    || window.notification
+    || window.onScreenDisplay
+    || window.criticalNotification
+    || window.utility
+    || window.managed
+    || window.menu
+    || window.dialog
 }
 
 
@@ -3015,14 +3019,26 @@ var animationSuite = {
     animationSuite.closeEffect = effect.readConfig("closeEffect", false);
     animationSuite.closeDuration = effect.readConfig("closeDuration", false);
 
-    animationSuite.openForModals = effect.readConfig("openForModals", false);
-    animationSuite.closeForModals = effect.readConfig("closeForModals", false);
+
+    animationSuite.openModalsEffect = effect.readConfig("openModalsEffect", false);
+    animationSuite.openModalsDuration = effect.readConfig("openModalsDuration", false);
+
+    animationSuite.closeModalsEffect = effect.readConfig("closeModalsEffect", false);
+    animationSuite.closeModalsDuration = effect.readConfig("closeModalsDuration", false);
+
+
+    // apply regular effects to modals
+    // animationSuite.openForModals = effect.readConfig("openForModals", false);
+    // animationSuite.closeForModals = effect.readConfig("closeForModals", false);
+
 
     animationSuite.minimizeEffect = effect.readConfig("minimizeEffect", false);
     animationSuite.minimizeDuration = effect.readConfig("minimizeDuration", false);
+    animationSuite.minimizePanelLink = effect.readConfig("minimizePanelLink", false);
 
     animationSuite.unMinimizeEffect = effect.readConfig("unminimizeEffect", false);
     animationSuite.unMinimizeDuration = effect.readConfig("unminimizeDuration", false);
+    animationSuite.unminimizePanelLink = effect.readConfig("unminimizePanelLink", false);
 
 
   },
@@ -3030,52 +3046,143 @@ var animationSuite = {
   windowAdded: function (window) {
     "use strict";
 
-    var openParams = openEffects[animationSuite.openEffect];
-    openParams.forEach(function (subEffect) {
-      attachWindowObject(subEffect, window)
-      if (isModal(window) && !animationSuite.openForModals){
-        return false;
-      }
-
-      effect.animate(window, Effect[subEffect.effect], animationSuite.openDuration, subEffect.to, subEffect.from)
-    })
-
+    if (window.normalWindow) {
+      var openParams = openEffects[animationSuite.openEffect];
+      animationSuite.runEffect(window, openParams, animationSuite.openDuration);
+    }
+    else {
+      var openModalsParams = openEffects[animationSuite.openModalsEffect];
+      animationSuite.runEffect(window, openModalsParams, animationSuite.openModalsDuration);
+    }
   },
 
   windowClosed: function (window) {
     "use strict";
 
-    if (isModal(window) && !animationSuite.closeForModals){
-      return false;
+    if (!window.visible || window.skipsCloseAnimation) {
+      return;
     }
 
-    var closeParams = closeEffects[animationSuite.closeEffect];
-    closeParams.forEach(function (subEffect) {
-      attachWindowObject(subEffect, window);  
-      effect.animate(window, Effect[subEffect.effect], animationSuite.closeDuration, subEffect.to, subEffect.from)
-    })
-
+    if (window.normalWindow) {
+      var closeParams = closeEffects[animationSuite.closeEffect];
+      animationSuite.runEffect(window, closeParams, animationSuite.closeDuration);
+    }
+    else {
+      var closeModalsParams = closeEffects[animationSuite.closeModalsEffect];
+      animationSuite.runEffect(window, closeModalsParams, animationSuite.closeModalsDuration);
+    }
   },
 
   windowUnminimized: function (window) {
     "use strict";
 
     var openParams = openEffects[animationSuite.unMinimizeEffect];
-    openParams.forEach(function (subEffect) {
-      attachWindowObject(subEffect, window)
-      effect.animate(window, Effect[subEffect.effect], animationSuite.unMinimizeDuration, subEffect.to, subEffect.from)
-    })
 
+    var panelEffects = animationSuite.getPanelEffects(window, "unminimize");
+
+    animationSuite.runEffect(window, openParams, animationSuite.unMinimizeDuration, panelEffects);
   },
 
   windowMinimized: function (window) {
     "use strict";
-    var closeParams = closeEffects[animationSuite.minimizeEffect];
-    closeParams.forEach(function (subEffect) {
-      attachWindowObject(subEffect, window)
-      effect.animate(window, Effect[subEffect.effect], animationSuite.minimizeDuration, subEffect.to, subEffect.from)
-    })
 
+    var closeParams = closeEffects[animationSuite.minimizeEffect];
+
+    var panelEffects = animationSuite.getPanelEffects(window, "minimize");
+
+    animationSuite.runEffect(window, closeParams, animationSuite.minimizeDuration, panelEffects);
+  },
+
+  getPanelEffects: function (window, type) {
+    var windowIcon = window.iconGeometry;
+    if (windowIcon.width == 0 || windowIcon.height == 0) {
+      return;
+    }
+
+    var windowRect = window.geometry;
+    if (windowRect.width == 0 || windowRect.height == 0) {
+      return;
+    }
+    var iconSize = {
+      value1: windowIcon.width,
+      value2: windowIcon.height
+    }
+    var windowSize = {
+      value1: windowRect.width,
+      value2: windowRect.height
+    }
+
+    var windowPos = {
+      value1: 0.0,
+      value2: 0.0      
+    }
+    var midPos = {
+      value1: windowIcon.x - windowRect.x - (windowRect.width - windowIcon.width) / 2,
+      value2: windowIcon.y - windowRect.y - (windowRect.height - windowIcon.height) / 2
+    }
+
+    var panelEffects = null;
+
+    if (type == "unminimize" && animationSuite.unminimizePanelLink) {
+      panelEffects = [
+        {
+          type: Effect.Size,
+          from: iconSize,
+          to: windowSize
+        },
+        {
+          type: Effect.Translation,
+          from: midPos,
+          to: windowPos
+        }
+      ]
+    }
+    else if (type == "minimize" && animationSuite.minimizePanelLink) {
+      panelEffects = [
+        {
+          type: Effect.Size,
+          from: windowSize,
+          to: iconSize
+        },
+        {
+          type: Effect.Translation,
+          from: windowPos,
+          to: midPos
+        }
+      ]
+
+    }
+
+    return panelEffects;
+
+  },
+
+  runEffect: function (window, effects, duration, panelEffects) {
+    "use strict";
+
+    var animations = [];
+
+    effects.forEach(function (subEffect) {
+      attachWindowObject(subEffect, window);
+      animations.push({
+        type: Effect[subEffect.effect],
+        curve: QEasingCurve.InOutQuad,
+        to: subEffect.to,
+        from: subEffect.from
+      })
+    });
+
+    if (panelEffects) {
+      panelEffects.forEach(function (panelEffect) {
+        animations.push(panelEffect)
+      });
+    }
+
+    animate({
+      window,
+      duration,
+      animations
+    })
   },
 
   init: function () {
